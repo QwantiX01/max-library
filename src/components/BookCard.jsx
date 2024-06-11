@@ -14,25 +14,19 @@ BookCard.propTypes = {
   author: PropTypes.string,
   path: PropTypes.string,
   type: PropTypes.string,
+  currentPath: PropTypes.string,
 };
 
-const setLike = () => {};
-
-function BookCard({ id, type, bookTitle, path, author }) {
+function BookCard({ id, type, bookTitle, currentPath, path, author }) {
   const navigate = useNavigate();
-  // const [redirect, setRedirect] = useState();
-  //
-  // if (redirect) {
-  //   if (type === "fol") {
-  //     return <Navigate to={`/books?p=/asd`} />;
-  //   } else {
-  //     return <Navigate to={`/book/${id}`} />;
-  //   }
-  // }
 
-  function redirect() {
+  function clickEvent() {
     if (type === "fol") {
-      navigate(`/books?p=/${path}`);
+      if (currentPath === "") {
+        navigate(`/books?p=/${currentPath + path}`);
+      } else {
+        navigate(`/books?p=${currentPath}/${path}`);
+      }
     } else {
       navigate(`/book/${id}`);
     }
@@ -41,25 +35,28 @@ function BookCard({ id, type, bookTitle, path, author }) {
   return (
     <div className="flex items-center">
       <div
-        onClick={() => redirect()}
-        className="overflow-hidden h-14 w-full mr-2 bg-[#F9F4EF] p-2 rounded-xl flex items-center gap-3.5 cursor-pointer hover:bg-[#f2EDE8]"
+        onClick={() => clickEvent()}
+        className="file-card overflow-hidden h-14 w-full mr-2 bg-[#F9F4EF] p-2 rounded-xl flex items-center gap-3.5 cursor-pointer hover:bg-[#f2EDE8]"
       >
         <img
           src={type === "fol" ? folderIcon : fileIcon ?? ""}
           alt="Book image"
           className="bg-[#EBE5E0] p-1.5 rounded h-full"
         />
-
         <div className="flex h-full flex-col">
-          <h1 className="font-medium font-serif m-0 ">{bookTitle}</h1>
+          <h1 className="font-medium font-serif m-0 ">
+            {type === "fol" ? path : bookTitle}
+          </h1>
           <p className="text-[10px] font-serif text-[#96734F]">{author}</p>
         </div>
       </div>
       <div className="h-10 ml-auto">
-        <Button icon={heartIcon ?? ""} action={setLike()}></Button>
+        <Button icon={heartIcon ?? ""}></Button>
       </div>
     </div>
   );
 }
+
+// eslint-disable-next-line react/prop-types
 
 export default BookCard;

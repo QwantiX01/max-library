@@ -1,6 +1,6 @@
 {
   "type": "fol",
-  "path": "/",
+  "path": "root",
   "docs": [
     {
       "type": "doc",
@@ -22,11 +22,11 @@
     },
     {
       "type": "fol",
-      "path": "/asd",
+      "path": "asd",
       "docs": [
         {
           "type": "fol",
-          "path": "/asd/",
+          "path": "sus",
           "docs": [
             {
               "id": "3",
@@ -61,6 +61,36 @@
           "bookTitle": "eeeeeeeeeeeeeeeeeeee",
           "bookDescription": "aaaaaaaaaaaaaaaaaaaaaaaa",
           "author": "KAKAPUL`TA"
+        }
+      ]
+    },
+    {
+      "type": "fol",
+      "path": "root",
+      "docs": [
+        {
+          "type": "doc",
+          "id": "1",
+          "isFile": true,
+          "bookImg": "https://lh3.google.com/u/1/d/1mfzE00O1pnUldntqUFcF_DAOWBDzM9Uwh_VY8VHR9aU=w200-h190-p-k-rw-v1-nu-iv1",
+          "bookTitle": "aaaaaaaaaaaaaaaaaaaaa",
+          "bookDescription": "aaaaaaaaaaaaaaaaaaaaaaaa",
+          "author": "Qwantiix"
+        },
+        {
+          "type": "fol",
+          "path": "root",
+          "docs": [
+            {
+              "type": "doc",
+              "id": "1",
+              "isFile": true,
+              "bookImg": "https://lh3.google.com/u/1/d/1mfzE00O1pnUldntqUFcF_DAOWBDzM9Uwh_VY8VHR9aU=w200-h190-p-k-rw-v1-nu-iv1",
+              "bookTitle": "aaaaaaaaaaaaaaaaaaaaa",
+              "bookDescription": "aaaaaaaaaaaaaaaaaaaaaaaa",
+              "author": "Qwantiix"
+            }
+          ]
         }
       ]
     }
