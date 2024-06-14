@@ -6,89 +6,147 @@
       "type": "doc",
       "id": "1",
       "isFile": true,
-      "bookImg": "https://lh3.google.com/u/1/d/1mfzE00O1pnUldntqUFcF_DAOWBDzM9Uwh_VY8VHR9aU=w200-h190-p-k-rw-v1-nu-iv1",
-      "bookTitle": "aaaaaaaaaaaaaaaaaaaaa",
-      "bookDescription": "aaaaaaaaaaaaaaaaaaaaaaaa",
-      "author": "Qwantiix"
-    },
-    {
-      "type": "doc",
-      "id": "2",
-      "isFile": false,
-      "bookImg": "https://lh3.google.com/u/1/d/1mfzE00O1pnUldntqUFcF_DAOWBDzM9Uwh_VY8VHR9aU=w200-h190-p-k-rw-v1-nu-iv1",
-      "bookTitle": "bbbbbbbbbbbbbbbbbbbbbbbbb",
-      "bookDescription": "aaaaaaaaaaaaaaaaaaaaaaaa",
-      "author": "ANANAS"
+      "bookImg": "https://example.com/image1.jpg",
+      "bookTitle": "Random Book 1",
+      "bookDescription": "Description of random book 1.",
+      "author": "Author A"
     },
     {
       "type": "fol",
-      "path": "asd",
+      "path": "folder1",
       "docs": [
         {
+          "type": "doc",
+          "id": "2",
+          "isFile": true,
+          "bookImg": "https://example.com/image2.jpg",
+          "bookTitle": "Random Book 2",
+          "bookDescription": "Description of random book 2.",
+          "author": "Author B"
+        },
+        {
           "type": "fol",
-          "path": "sus",
+          "path": "subfolder1",
           "docs": [
             {
+              "type": "doc",
               "id": "3",
               "isFile": false,
-              "bookImg": "https://lh3.google.com/u/1/d/1mfzE00O1pnUldntqUFcF_DAOWBDzM9Uwh_VY8VHR9aU=w200-h190-p-k-rw-v1-nu-iv1",
-              "bookTitle": "cccccccccccccccccccccccccccccccccc",
-              "bookDescription": "aaaaaaaaaaaaaaaaaaaaaaaa",
-              "author": "bibosa"
+              "bookImg": "https://example.com/image3.jpg",
+              "bookTitle": "Random Book 3",
+              "bookDescription": "Description of random book 3.",
+              "author": "Author C"
+            },
+            {
+              "type": "fol",
+              "path": "subsubfolder1",
+              "docs": [
+                {
+                  "type": "doc",
+                  "id": "4",
+                  "isFile": true,
+                  "bookImg": "https://example.com/image4.jpg",
+                  "bookTitle": "Random Book 4",
+                  "bookDescription": "Description of random book 4.",
+                  "author": "Author D"
+                },
+                {
+                  "type": "doc",
+                  "id": "5",
+                  "isFile": false,
+                  "bookImg": "https://example.com/image5.jpg",
+                  "bookTitle": "Random Book 5",
+                  "bookDescription": "Description of random book 5.",
+                  "author": "Author E"
+                }
+              ]
             }
           ]
-        },
-        {
-          "id": "3",
-          "isFile": false,
-          "bookImg": "https://lh3.google.com/u/1/d/1mfzE00O1pnUldntqUFcF_DAOWBDzM9Uwh_VY8VHR9aU=w200-h190-p-k-rw-v1-nu-iv1",
-          "bookTitle": "cccccccccccccccccccccccccccccccccc",
-          "bookDescription": "aaaaaaaaaaaaaaaaaaaaaaaa",
-          "author": "bibosa"
-        },
-        {
-          "id": "4",
-          "isFile": true,
-          "bookImg": "https://lh3.google.com/u/1/d/1mfzE00O1pnUldntqUFcF_DAOWBDzM9Uwh_VY8VHR9aU=w200-h190-p-k-rw-v1-nu-iv1",
-          "bookTitle": "dddddddddddddddddddddddddddddddddddd",
-          "bookDescription": "aaaaaaaaaaaaaaaaaaaaaaaa",
-          "author": "A"
-        },
-        {
-          "id": "5",
-          "isFile": false,
-          "bookImg": "https://lh3.google.com/u/1/d/1mfzE00O1pnUldntqUFcF_DAOWBDzM9Uwh_VY8VHR9aU=w200-h190-p-k-rw-v1-nu-iv1",
-          "bookTitle": "eeeeeeeeeeeeeeeeeeee",
-          "bookDescription": "aaaaaaaaaaaaaaaaaaaaaaaa",
-          "author": "KAKAPUL`TA"
         }
       ]
     },
     {
       "type": "fol",
-      "path": "root",
+      "path": "folder2",
       "docs": [
         {
           "type": "doc",
-          "id": "1",
+          "id": "6",
           "isFile": true,
-          "bookImg": "https://lh3.google.com/u/1/d/1mfzE00O1pnUldntqUFcF_DAOWBDzM9Uwh_VY8VHR9aU=w200-h190-p-k-rw-v1-nu-iv1",
-          "bookTitle": "aaaaaaaaaaaaaaaaaaaaa",
-          "bookDescription": "aaaaaaaaaaaaaaaaaaaaaaaa",
-          "author": "Qwantiix"
+          "bookImg": "https://example.com/image6.jpg",
+          "bookTitle": "Random Book 6",
+          "bookDescription": "Description of random book 6.",
+          "author": "Author F"
+        },
+        {
+          "type": "doc",
+          "id": "7",
+          "isFile": true,
+          "bookImg": "https://example.com/image7.jpg",
+          "bookTitle": "Random Book 7",
+          "bookDescription": "Description of random book 7.",
+          "author": "Author G"
         },
         {
           "type": "fol",
-          "path": "root",
+          "path": "subfolder2",
           "docs": [
             {
               "type": "doc",
-              "id": "1",
+              "id": "8",
               "isFile": true,
-              "bookImg": "https://lh3.google.com/u/1/d/1mfzE00O1pnUldntqUFcF_DAOWBDzM9Uwh_VY8VHR9aU=w200-h190-p-k-rw-v1-nu-iv1",
-              "bookTitle": "aaaaaaaaaaaaaaaaaaaaa",
-              "bookDescription": "aaaaaaaaaaaaaaaaaaaaaaaa",
-              "author": "Qwantiix"
+              "bookImg": "https://example.com/image8.jpg",
+              "bookTitle": "Random Book 8",
+              "bookDescription": "Description of random book 8.",
+              "author": "Author H"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "9",
+      "isFile": false,
+      "bookImg": "https://example.com/image9.jpg",
+      "bookTitle": "Random Book 9",
+      "bookDescription": "Description of random book 9.",
+      "author": "Author I"
+    },
+    {
+      "type": "fol",
+      "path": "folder3",
+      "docs": [
+        {
+          "type": "doc",
+          "id": "10",
+          "isFile": true,
+          "bookImg": "https://example.com/image10.jpg",
+          "bookTitle": "Random Book 10",
+          "bookDescription": "Description of random book 10.",
+          "author": "Author J"
+        },
+        {
+          "type": "fol",
+          "path": "subfolder3",
+          "docs": [
+            {
+              "type": "doc",
+              "id": "11",
+              "isFile": false,
+              "bookImg": "https://example.com/image11.jpg",
+              "bookTitle": "Random Book 11",
+              "bookDescription": "Description of random book 11.",
+              "author": "Author K"
+            },
+            {
+              "type": "doc",
+              "id": "12",
+              "isFile": true,
+              "bookImg": "https://example.com/image12.jpg",
+              "bookTitle": "Random Book 12",
+              "bookDescription": "Description of random book 12.",
+              "author": "Author L"
             }
           ]
         }

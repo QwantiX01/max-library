@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 function Header() {
   return (
-    <header className="h-16 w-full bg-[#FCFAF7] flex items-center justify-between px-16 py-3 border-b-2 border-[#E5E8EB] ">
+    <header className="h-16 w-full bg-[#F1F8E8] flex items-center justify-between px-16 py-3 border-b-2 border-[#D8EFD3] ">
       {/*Logo*/}
       <Link to="/" className="text-xl font-serif font-bold">
         Reedly

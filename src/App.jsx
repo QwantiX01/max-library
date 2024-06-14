@@ -3,6 +3,7 @@ import Book from "./pages/Book.jsx";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 import BookGallery from "./components/BookGallery.jsx";
+import Account from "./pages/Account.jsx";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/book">
           <Route path=":id" element={<Book />} />
         </Route>
+        <Route path="/account" element={<Account />} />
       </Routes>
       <Footer />
     </BrowserRouter>
