@@ -9,7 +9,7 @@ function Button({ icon, action }) {
   return (
     <button
       onClick={action}
-      className="h-full aspect-square p-2 bg-[#D8EFD3] rounded-xl hover:bg-[#95D2B3]"
+      className="h-full aspect-square p-2 bg-mint-light rounded-xl hover:bg-mint"
     >
       <img className="" src={icon} alt={icon} />
     </button>

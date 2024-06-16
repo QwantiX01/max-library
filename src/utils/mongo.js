@@ -1,6 +1,6 @@
-import { MongoClient, ServerApiVersion } from "mongodb";
+import { MongoClient, ObjectId, ServerApiVersion } from "mongodb";
 
-const uri = "mongodb://admin:admin@localhost:27017/admin";
+const uri = "mongodb://fs:fs_admin@localhost:27017";
 
 const client = new MongoClient(uri, {
   serverApi: {
@@ -10,43 +10,51 @@ const client = new MongoClient(uri, {
   },
 });
 
-async function addFolder(name, path = "") {
+async function getFolder(path = "") {
   try {
     await client.connect();
-    const collection = await client.db("file-system").collection("file-system");
 
-    let pathParts = path.split("/");
+    let collection = await client.db("file-system").collection("file-system");
 
-    let query = "";
+    return (await collection.findOne({ path: path })) || "bruh";
+  } finally {
+    await client.close();
+  }
+}
 
-    for (let i = 0; i < pathParts.length; i++) {
-      query;
+async function addFolder(path = "") {
+  try {
+    await client.connect();
+
+    let folderInPath = "";
+    const lastSlashIndex = path.lastIndexOf("/");
+    if (lastSlashIndex !== -1) {
+      folderInPath = path.substring(0, lastSlashIndex);
     }
 
-    let folder = {
-      type: "folder",
-      path: name,
-      docs: [],
-    };
+    let collection = await client.db("file-system").collection("file-system");
 
-    await collection.insertOne(folder);
+    const isExist = collection.find({ path: path });
+
+    if (isExist !== null) return "Folder Exist";
+
+    let parentFolder = await getFolder(folderInPath);
+
+    let parentFolderDocs = parentFolder.docs;
+
+    parentFolderDocs.append();
+
+    let oid = ObjectId();
+
+    await collection.insertOne({ _id: oid, path: path, docs: [] });
+
+    await collection.updateOne(
+      { path: folderInPath },
+      { $set: { docs: { $ref: "docs", $id: oid } } },
+    );
   } finally {
     await client.close();
   }
 }
 
-addFolder().catch(console.dir);
-
-async function getFS() {
-  try {
-    await client.connect();
-
-    const collection = await client.db("file-system").collection("file-system");
-
-    return collection.find({});
-  } finally {
-    await client.close();
-  }
-}
-
-getFS().catch(console.dir);
+await addFolder("sosat").catch(console.dir);

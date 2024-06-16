@@ -36,12 +36,12 @@ function BookCard({ id, type, bookTitle, currentPath, path, author }) {
     <div className="flex items-center">
       <div
         onClick={() => clickEvent()}
-        className="file-card overflow-hidden h-14 w-full mr-2 bg-[#D8EFD3] p-2 rounded-xl flex items-center gap-3.5 cursor-pointer hover:bg-[#95D2B3]"
+        className="file-card overflow-hidden h-14 w-full mr-2 bg-mint-light p-2 rounded-xl flex items-center gap-3.5 cursor-pointer hover:bg-mint"
       >
         <img
           src={type === "fol" ? folderIcon : fileIcon ?? ""}
           alt="Book image"
-          className="bg-[#95D2B3] p-1.5 rounded h-full"
+          className="bg-mint p-1.5 rounded h-full"
         />
         <div className="flex h-full flex-col">
           <h1 className="font-medium font-serif m-0 ">

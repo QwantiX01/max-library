@@ -61,7 +61,7 @@ function BookGallery() {
   return (
     <main
       onContextMenu={(e) => contextMenu(e)}
-      className="px-20 lg:px-40 py-10 bg-[#F1F8E8] h-[100vh]"
+      className=" py-10 bg-mint-pale min-h-[90vh]"
     >
       <ContextMenu
         positionY={posY}
@@ -69,11 +69,14 @@ function BookGallery() {
         isShown={isShown}
         setIsShown={setIsShown}
       />
-      <p className="font-serif text-2xl font-bold mb-3">{`/${rootFolderPath}${path}`}</p>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        {bookList.map((value, index) => (
-          <BookCard {...value} currentPath={path} key={index} />
-        ))}
+
+      <div className="bg-mint-very-light shadow-md rounded-lg px-12 py-8 m-auto h-full  w-max">
+        <p className="font-serif text-2xl font-bold mb-3">{`/${rootFolderPath}${path}`}</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {bookList.map((value, index) => (
+            <BookCard {...value} currentPath={path} key={index} />
+          ))}
+        </div>
       </div>
     </main>
   );

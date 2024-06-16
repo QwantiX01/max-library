@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 
 function Header() {
   return (
-    <header className="h-16 w-full bg-[#F1F8E8] flex items-center justify-between px-16 py-3 border-b-2 border-[#D8EFD3] ">
+    <header className="h-16 w-full bg-mint-pale flex items-center justify-between px-16 py-3 border-b-2 border-mint-light ">
       {/*Logo*/}
       <Link to="/" className="text-xl font-serif font-bold">
-        Reedly
+        <p>Reedly</p>
       </Link>
       {/*Controls*/}
       <div className=" h-full flex gap-8">
@@ -18,8 +18,6 @@ function Header() {
         <div className="h-full flex gap-2">
           <Button icon={heartIcon} />
         </div>
-        {/*Account*/}
-        <div className=""></div>
       </div>
     </header>
   );
