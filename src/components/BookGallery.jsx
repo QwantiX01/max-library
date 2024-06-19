@@ -1,19 +1,37 @@
 import BookCard from "./BookCard.jsx";
 import { useSearchParams } from "react-router-dom";
-import data from "../dataSource.json";
 import { useState } from "react";
+import data from "../dataSource.json";
+import dataBooks from "../dataBooks.json";
+
+const getBooks = (path) => {
+  let pathParts = path.split("/");
+  let currentFolder = data.docs;
+  let rootFolderPath = data.path;
+
+  for (let i = 0; i < pathParts.length; i++) {
+    if (i === 0) {
+      continue;
+    }
+
+    currentFolder = currentFolder.find(
+      (f) => f.isFile === false && f.path === pathParts[i],
+    ).docs;
+  }
+  return [currentFolder, rootFolderPath];
+};
 
 function BookGallery() {
   const [searchParams] = useSearchParams();
-  const [posX, setPosX] = useState();
-  const [posY, setPosY] = useState();
-  const [isShown, setIsShown] = useState(false);
+  const [contextPositionX, setContextPositionX] = useState();
+  const [contextPositionY, setContextPositionY] = useState();
+  const [isMenuShown, setIsMenuShown] = useState(false);
 
   document.body.addEventListener("click", (e) => {
     let elements = document.getElementsByClassName("ctx-menu");
     for (let i = 0; i < elements.length; i++) {
       if (!elements.item(i).contains(e.target)) {
-        setIsShown(false);
+        setIsMenuShown(false);
       }
     }
   });
@@ -25,13 +43,13 @@ function BookGallery() {
     for (let i = 0; i < elements.length; i++) {
       if (elements.item(i).contains(e.target)) {
         if (document.getElementById("ctx-menu") !== null) {
-          setIsShown(false);
+          setIsMenuShown(false);
           document.getElementById("ctx-menu").remove();
         }
 
-        setPosY(e.clientY);
-        setPosX(e.clientX);
-        setIsShown(true);
+        setContextPositionY(e.clientY);
+        setContextPositionX(e.clientX);
+        setIsMenuShown(true);
       }
     }
   }
@@ -39,35 +57,17 @@ function BookGallery() {
   let path = searchParams.get("p");
   if (path === undefined || path === null) path = "";
 
-  const getBooks = (path) => {
-    let pathParts = path.split("/");
-
-    let currentFolder = data.docs;
-    let rootFolderPath = data.path;
-
-    for (let i = 0; i < pathParts.length; i++) {
-      if (i === 0) continue;
-
-      currentFolder = currentFolder.find(
-        (f) => f.type === "fol" && f.path === pathParts[i],
-      ).docs;
-    }
-
-    return [currentFolder, rootFolderPath];
-  };
-
   let [bookList, rootFolderPath] = getBooks(path);
-
   return (
     <main
       onContextMenu={(e) => contextMenu(e)}
       className=" py-10 bg-mint-pale min-h-[90vh]"
     >
       <ContextMenu
-        positionY={posY}
-        positionX={posX}
-        isShown={isShown}
-        setIsShown={setIsShown}
+        positionY={contextPositionY}
+        positionX={contextPositionX}
+        isShown={isMenuShown}
+        setIsShown={setIsMenuShown}
       />
 
       <div className="bg-mint-very-light shadow-md rounded-lg px-12 py-8 m-auto h-full  w-max">
@@ -83,36 +83,34 @@ function BookGallery() {
 }
 
 function ContextMenu({ positionY, positionX, isShown, setIsShown }) {
-  function closePop() {
-    setIsShown(false);
+  function ContextOption({ event, children }) {
+    return (
+      <button
+        onClick={() => {
+          event();
+          setIsShown(false);
+        }}
+        className="bg-mint-light hover:bg-mint-dark hover:text-white px-2 rounded text-start"
+      >
+        {children}
+      </button>
+    );
   }
+
+  function openDocument() {}
 
   return (
     isShown && (
       <div
         className={"ctx-menu"}
-        style={{ position: "fixed", left: positionX, top: positionY }}
+        style={{ position: "fixed", left: positionX + 12, top: positionY }}
       >
-        <div className="w-32 min-h-8 p-1 rounded-lg bg-[#E1D6CA]">
+        <div className="w-max min-h-8 p-1.5 rounded-lg shadow-md bg-mint">
           <div className="flex flex-col gap-1 justify-center">
-            <div
-              onClick={() => closePop()}
-              className="bg-[#c4c0bb] hover:bg-[#aba7a2] px-1.5 rounded"
-            >
-              1
-            </div>
-            <div
-              onClick={() => closePop()}
-              className="bg-[#c4c0bb] hover:bg-[#aba7a2] px-1.5 rounded"
-            >
-              1
-            </div>
-            <div
-              onClick={() => closePop()}
-              className="bg-[#c4c0bb] hover:bg-[#aba7a2] px-1.5 rounded"
-            >
-              1
-            </div>
+            <ContextOption event={() => openDocument()}>Open</ContextOption>
+            <ContextOption event={() => {}}>Like</ContextOption>
+            <ContextOption event={() => {}}>Save</ContextOption>
+            <ContextOption event={() => {}}>Delete</ContextOption>
           </div>
         </div>
       </div>

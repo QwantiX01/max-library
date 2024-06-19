@@ -1,60 +1,94 @@
 import { MongoClient, ObjectId, ServerApiVersion } from "mongodb";
 
-const uri = "mongodb://fs:fs_admin@localhost:27017";
+export async function getFolder(path = "") {
+  const uri = "mongodb://fs:fs_admin@localhost:27017";
 
-const client = new MongoClient(uri, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  },
-});
+  const client = new MongoClient(uri, {
+    serverApi: {
+      version: ServerApiVersion.v1,
+      strict: true,
+      deprecationErrors: true,
+    },
+  });
 
-async function getFolder(path = "") {
   try {
     await client.connect();
 
     let collection = await client.db("file-system").collection("file-system");
 
-    return (await collection.findOne({ path: path })) || "bruh";
+    if (path === "") {
+      return await collection.find({ path: { $not: /\/+/ } }).toArray();
+    }
+
+    const res = await collection
+      .aggregate([
+        {
+          $match: { path: path },
+        },
+        {
+          $lookup: {
+            from: "file-system",
+            localField: "docs.$id",
+            foreignField: "_id",
+            as: "Folders",
+          },
+        },
+      ])
+      .toArray();
+
+    return JSON.stringify(res, null, 2);
   } finally {
     await client.close();
   }
 }
 
-async function addFolder(path = "") {
+// console.log(await getFolder("asd"));
+
+export async function addFolder(path = "") {
   try {
     await client.connect();
-
-    let folderInPath = "";
-    const lastSlashIndex = path.lastIndexOf("/");
-    if (lastSlashIndex !== -1) {
-      folderInPath = path.substring(0, lastSlashIndex);
-    }
-
     let collection = await client.db("file-system").collection("file-system");
 
-    const isExist = collection.find({ path: path });
+    if (!path.includes("/")) {
+      let objectId = ObjectId.createFromTime(Date.now());
 
-    if (isExist !== null) return "Folder Exist";
+      await collection.insertOne({ _id: objectId, path: path, docs: [] });
+      return "Ok";
+    }
 
-    let parentFolder = await getFolder(folderInPath);
+    let parentFolderPath = "";
+    const lastSlashIndex = path.lastIndexOf("/");
+    if (lastSlashIndex !== -1) {
+      parentFolderPath = path.substring(0, lastSlashIndex);
+    }
 
-    let parentFolderDocs = parentFolder.docs;
+    const folder = await collection.findOne({ path: path });
 
-    parentFolderDocs.append();
+    const parentFolder = await collection.findOne({ path: parentFolderPath });
 
-    let oid = ObjectId();
+    if (parentFolder === null) return "Folder not found";
+    if (folder !== null) return "Folder Exist";
 
-    await collection.insertOne({ _id: oid, path: path, docs: [] });
+    let objectId = ObjectId.createFromTime(Date.now());
 
-    await collection.updateOne(
-      { path: folderInPath },
-      { $set: { docs: { $ref: "docs", $id: oid } } },
+    await collection.insertOne({ _id: objectId, path: path, docs: [] });
+
+    await collection.findOneAndUpdate(
+      { _id: parentFolder._id },
+      {
+        $push: {
+          docs: {
+            $ref: "file-system",
+            $id: objectId,
+            $db: "file-system",
+          },
+        },
+      },
+      { upsert: true },
     );
   } finally {
     await client.close();
   }
 }
 
-await addFolder("sosat").catch(console.dir);
+// await addFolder().catch(console.dir);
