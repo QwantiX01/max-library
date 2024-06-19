@@ -2,26 +2,25 @@ import PropTypes from "prop-types";
 import "react-router-dom";
 import folderIcon from "../assets/folder-icon.svg";
 import fileIcon from "../assets/file-icon.svg";
-import { Link, Navigate, useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Button from "./Button.jsx";
 import heartIcon from "../assets/heart-svgrepo-com.svg";
-import { useState } from "react";
+import likedHeartIcon from "../assets/accountSvg.svg";
+import dataBooks from "../dataBooks.json";
 
 BookCard.propTypes = {
   id: PropTypes.string,
-  isFile: PropTypes.bool,
-  bookTitle: PropTypes.string,
-  author: PropTypes.string,
   path: PropTypes.string,
-  type: PropTypes.string,
   currentPath: PropTypes.string,
 };
 
-function BookCard({ id, type, bookTitle, currentPath, path, author }) {
+function BookCard({ id, currentPath, path }) {
+  // let book = data.docs.find((value) => value.id === id);  let books = dataBooks.books.find((value) => value.id === id);
   const navigate = useNavigate();
+  let books = dataBooks.books.find((value) => value.id === id);
 
   function clickEvent() {
-    if (type === "fol") {
+    if (books.isFile === false) {
       if (currentPath === "") {
         navigate(`/books?p=/${currentPath + path}`);
       } else {

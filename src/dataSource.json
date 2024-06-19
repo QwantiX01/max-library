@@ -1,50 +1,53 @@
 {
-  "type": "fol",
+  "isFile": false,
   "path": "root",
   "docs": [
     {
       "type": "doc",
       "id": "1",
       "isFile": true,
-      "bookImg": "https://example.com/image1.jpg",
+      "isLiked": true,
+      "bookImg": "https://th.bing.com/th/id/OIP.4NHXlSOghERy18d4LPzE_AHaNK?&rs=1&pid=ImgDetMain",
       "bookTitle": "Random Book 1",
       "bookDescription": "Description of random book 1.",
       "author": "Author A"
     },
     {
-      "type": "fol",
+      "isFile": false,
       "path": "folder1",
       "docs": [
         {
           "type": "doc",
           "id": "2",
           "isFile": true,
+          "isLiked": false,
           "bookImg": "https://example.com/image2.jpg",
           "bookTitle": "Random Book 2",
           "bookDescription": "Description of random book 2.",
           "author": "Author B"
         },
         {
-          "type": "fol",
+          "isFile": false,
           "path": "subfolder1",
           "docs": [
             {
-              "type": "doc",
               "id": "3",
-              "isFile": false,
+              "isFile": true,
+              "isLiked": false,
               "bookImg": "https://example.com/image3.jpg",
               "bookTitle": "Random Book 3",
               "bookDescription": "Description of random book 3.",
               "author": "Author C"
             },
             {
-              "type": "fol",
+              "isFile": false,
               "path": "subsubfolder1",
               "docs": [
                 {
                   "type": "doc",
                   "id": "4",
                   "isFile": true,
+                  "isLiked": false,
                   "bookImg": "https://example.com/image4.jpg",
                   "bookTitle": "Random Book 4",
                   "bookDescription": "Description of random book 4.",
@@ -53,7 +56,8 @@
                 {
                   "type": "doc",
                   "id": "5",
-                  "isFile": false,
+                  "isFile": true,
+                  "isLiked": false,
                   "bookImg": "https://example.com/image5.jpg",
                   "bookTitle": "Random Book 5",
                   "bookDescription": "Description of random book 5.",
@@ -66,13 +70,14 @@
       ]
     },
     {
-      "type": "fol",
+      "isFile": false,
       "path": "folder2",
       "docs": [
         {
           "type": "doc",
           "id": "6",
           "isFile": true,
+          "isLiked": false,
           "bookImg": "https://example.com/image6.jpg",
           "bookTitle": "Random Book 6",
           "bookDescription": "Description of random book 6.",
@@ -82,19 +87,21 @@
           "type": "doc",
           "id": "7",
           "isFile": true,
+          "isLiked": false,
           "bookImg": "https://example.com/image7.jpg",
           "bookTitle": "Random Book 7",
           "bookDescription": "Description of random book 7.",
           "author": "Author G"
         },
         {
-          "type": "fol",
+          "isFile": false,
           "path": "subfolder2",
           "docs": [
             {
               "type": "doc",
               "id": "8",
               "isFile": true,
+              "isLiked": false,
               "bookImg": "https://example.com/image8.jpg",
               "bookTitle": "Random Book 8",
               "bookDescription": "Description of random book 8.",
@@ -108,32 +115,35 @@
       "type": "doc",
       "id": "9",
       "isFile": false,
+      "isLiked": false,
       "bookImg": "https://example.com/image9.jpg",
       "bookTitle": "Random Book 9",
       "bookDescription": "Description of random book 9.",
       "author": "Author I"
     },
     {
-      "type": "fol",
+      "isFile": false,
       "path": "folder3",
       "docs": [
         {
           "type": "doc",
           "id": "10",
           "isFile": true,
+          "isLiked": false,
           "bookImg": "https://example.com/image10.jpg",
           "bookTitle": "Random Book 10",
           "bookDescription": "Description of random book 10.",
           "author": "Author J"
         },
         {
-          "type": "fol",
+          "isFile": false,
           "path": "subfolder3",
           "docs": [
             {
               "type": "doc",
               "id": "11",
               "isFile": false,
+              "isLiked": false,
               "bookImg": "https://example.com/image11.jpg",
               "bookTitle": "Random Book 11",
               "bookDescription": "Description of random book 11.",
@@ -143,6 +153,7 @@
               "type": "doc",
               "id": "12",
               "isFile": true,
+              "isLiked": false,
               "bookImg": "https://example.com/image12.jpg",
               "bookTitle": "Random Book 12",
               "bookDescription": "Description of random book 12.",

@@ -1,0 +1,113 @@
+{
+  "books": [
+    {
+    "id": "1",
+    "isFile": true,
+    "isLiked": true,
+    "bookImg": "https://th.bing.com/th/id/OIP.4NHXlSOghERy18d4LPzE_AHaNK?&rs=1&pid=ImgDetMain",
+    "bookTitle": "Random Book 1",
+    "bookDescription": "Description of random book 1.",
+    "author": "Author A"
+    },
+    {
+      "id": "2",
+      "isFile": true,
+      "isLiked": false,
+      "bookImg": "https://th.bing.com/th/id/OIP.4NHXlSOghERy18d4LPzE_AHaNK?&rs=1&pid=ImgDetMain",
+      "bookTitle": "Random Book 2",
+      "bookDescription": "Description of random book 2.",
+      "author": "Author B"
+    },
+    {
+      "id": "3",
+      "isFile": false,
+      "isLiked": false,
+      "bookImg": "https://th.bing.com/th/id/OIP.4NHXlSOghERy18d4LPzE_AHaNK?&rs=1&pid=ImgDetMain",
+      "bookTitle": "Random Book 3",
+      "bookDescription": "Description of random book 3.",
+      "author": "Author C"
+    },
+    {
+      "id": "4",
+      "isFile": true,
+      "isLiked": false,
+      "bookImg": "https://th.bing.com/th/id/OIP.4NHXlSOghERy18d4LPzE_AHaNK?&rs=1&pid=ImgDetMain",
+      "bookTitle": "Random Book 4",
+      "bookDescription": "Description of random book 4.",
+      "author": "Author D"
+    },
+    {
+      "type": "doc",
+      "id": "5",
+      "isFile": false,
+      "isLiked": false,
+      "bookImg": "https://th.bing.com/th/id/OIP.4NHXlSOghERy18d4LPzE_AHaNK?&rs=1&pid=ImgDetMain",
+      "bookTitle": "Random Book 5",
+      "bookDescription": "Description of random book 5.",
+      "author": "Author E"
+    },
+    {
+      "id": "6",
+      "isFile": true,
+      "isLiked": false,
+      "bookImg": "https://th.bing.com/th/id/OIP.4NHXlSOghERy18d4LPzE_AHaNK?&rs=1&pid=ImgDetMain",
+      "bookTitle": "Random Book 6",
+      "bookDescription": "Description of random book 6.",
+      "author": "Author F"
+    },
+    {
+      "id": "7",
+      "isFile": true,
+      "isLiked": false,
+      "bookImg": "https://th.bing.com/th/id/OIP.4NHXlSOghERy18d4LPzE_AHaNK?&rs=1&pid=ImgDetMain",
+      "bookTitle": "Random Book 7",
+      "bookDescription": "Description of random book 7.",
+      "author": "Author G"
+    },
+    {
+      "id": "8",
+      "isFile": true,
+      "isLiked": false,
+      "bookImg": "https://th.bing.com/th/id/OIP.4NHXlSOghERy18d4LPzE_AHaNK?&rs=1&pid=ImgDetMain",
+      "bookTitle": "Random Book 8",
+      "bookDescription": "Description of random book 8.",
+      "author": "Author H"
+    },
+    {
+      "id": "9",
+      "isFile": false,
+      "isLiked": false,
+      "bookImg": "https://th.bing.com/th/id/OIP.4NHXlSOghERy18d4LPzE_AHaNK?&rs=1&pid=ImgDetMain",
+      "bookTitle": "Random Book 9",
+      "bookDescription": "Description of random book 9.",
+      "author": "Author I"
+    },
+    {
+      "id": "10",
+      "isFile": true,
+      "isLiked": false,
+      "bookImg": "https://th.bing.com/th/id/OIP.4NHXlSOghERy18d4LPzE_AHaNK?&rs=1&pid=ImgDetMain",
+      "bookTitle": "Random Book 10",
+      "bookDescription": "Description of random book 10.",
+      "author": "Author J"
+    },
+    {
+      "id": "11",
+      "isFile": false,
+      "isLiked": false,
+      "bookImg": "https://th.bing.com/th/id/OIP.4NHXlSOghERy18d4LPzE_AHaNK?&rs=1&pid=ImgDetMain",
+      "bookTitle": "Random Book 11",
+      "bookDescription": "Description of random book 11.",
+      "author": "Author K"
+    },
+    {
+      "id": "12",
+      "isFile": true,
+      "isLiked": false,
+      "bookImg": "https://th.bing.com/th/id/OIP.4NHXlSOghERy18d4LPzE_AHaNK?&rs=1&pid=ImgDetMain",
+      "bookTitle": "Random Book 12",
+      "bookDescription": "Description of random book 12.",
+      "author": "Author L"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "current": "2005",
+  "accounts": [
+    {
+      "id": "2005",
+      "img": "default",
+      "nickname": "Максим Ковалишин",
+      "likedById": [
+        "1",
+        "2",
+        "3"
+      ]
+    }
+  ]
+}

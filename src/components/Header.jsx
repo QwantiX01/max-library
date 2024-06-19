@@ -1,9 +1,18 @@
 import Search from "./Search.jsx";
 import Button from "./Button.jsx";
+import profileIcon from "../assets/accountSvg.svg";
 import heartIcon from "../assets/heart-svgrepo-com.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Header() {
+  const navigate = useNavigate();
+
+  const handleAccountNavigation = () => {
+    navigate("/account");
+  };
+
+  function showLikes() {}
+
   return (
     <header className="h-16 w-full bg-mint-pale flex items-center justify-between px-16 py-3 border-b-2 border-mint-light ">
       {/*Logo*/}
@@ -16,7 +25,8 @@ function Header() {
         <Search />
         {/*Buttons*/}
         <div className="h-full flex gap-2">
-          <Button icon={heartIcon} />
+          <Button action={handleAccountNavigation} icon={profileIcon || ""} />
+          <Button action={handleAccountNavigation} icon={heartIcon} />
         </div>
       </div>
     </header>

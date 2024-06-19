@@ -7,7 +7,7 @@ import dataBooks from "../dataBooks.json";
 
 Book.propTypes = { id: PropTypes.string };
 
-const setLike = () => {};
+// const setLike = () => {};
 
 function Book() {
   const { id } = useParams();
