@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import "react-router-dom";
 import folderIcon from "../assets/folder-icon.svg";
 import { useNavigate } from "react-router-dom";
-import Button from "./Button.jsx";
 
 FolderCard.propTypes = {
   id: PropTypes.string,

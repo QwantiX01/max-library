@@ -64,6 +64,10 @@ function BookGallery() {
     return "waiting...";
   }
 
+  if (error) {
+    return "Error" + error;
+  }
+
   document.body.addEventListener("click", (e) => {
     let elements = document.getElementsByClassName("ctx-menu");
     for (let i = 0; i < elements.length; i++) {
@@ -159,7 +163,7 @@ function ContextMenu({ positionY, positionX, isShown, setIsShown }) {
       >
         <div className="w-max min-h-8 p-1.5 rounded-lg shadow-md bg-mint">
           <div className="flex flex-col gap-1 justify-center">
-            <ContextOption event={() => openDocument()}>Open</ContextOption>
+            <ContextOption event={() => {}}>Open</ContextOption>
             <ContextOption event={() => {}}>Like</ContextOption>
             <ContextOption event={() => {}}>Save</ContextOption>
             <ContextOption event={() => {}}>Delete</ContextOption>

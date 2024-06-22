@@ -1,5 +1,3 @@
-import PropTypes from "prop-types";
-
 AdminBody.propTypes = {};
 
 function AdminBody() {

@@ -5,8 +5,6 @@ import Footer from "./components/Footer.jsx";
 import BookGallery from "./components/BookGallery.jsx";
 import Account from "./pages/Account.jsx";
 
-import { React } from "react";
-
 function App() {
   return (
     <BrowserRouter>

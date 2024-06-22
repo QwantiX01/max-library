@@ -2,7 +2,7 @@ import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
 import AdminBody from "../components/AdminBody.jsx";
 
-function Admin(props) {
+function Admin() {
   return (
     <div>
       <Header />

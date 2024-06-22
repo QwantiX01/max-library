@@ -1,5 +1,3 @@
-import BookCard from "../components/BookCard.jsx";
-
 function Account() {
   return (
     <div className="min-h-screen bg-mint-pale flex flex-col items-center py-10">

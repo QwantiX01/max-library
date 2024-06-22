@@ -4,7 +4,7 @@ services:
     image: mongo
     container_name: my-mongodb
     ports:
-      - 27017:27017
+      - "27017:27017"
     environment:
       - MONGO_INITDB_ROOT_USERNAME=fs
       - MONGO_INITDB_ROOT_PASSWORD=fs_admin

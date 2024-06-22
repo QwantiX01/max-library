@@ -11,8 +11,6 @@ function Header() {
     navigate("/account");
   };
 
-  function showLikes() {}
-
   return (
     <header className="h-16 w-full bg-mint-pale flex items-center justify-between px-16 py-3 border-b-2 border-mint-light ">
       {/*Logo*/}
