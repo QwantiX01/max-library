@@ -1,11 +1,6 @@
-import { GetAccount, GetLikedDocs } from "../utils/accountServece.ts";
 import BookCard from "../components/BookCard.jsx";
 
 function Account() {
-  let account = GetAccount() || null;
-  let liked = GetLikedDocs(account);
-
-  let img = account.img;
   return (
     <div className="min-h-screen bg-mint-pale flex flex-col items-center py-10">
       <div className="bg-mint-very-light shadow-md rounded-lg p-6 max-w-2xl w-full">

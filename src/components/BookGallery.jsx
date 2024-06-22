@@ -1,31 +1,68 @@
-import BookCard from "./BookCard.jsx";
+import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from "react-router-dom";
 import { useState } from "react";
-import data from "../dataSource.json";
-import dataBooks from "../dataBooks.json";
-
-const getBooks = (path) => {
-  let pathParts = path.split("/");
-  let currentFolder = data.docs;
-  let rootFolderPath = data.path;
-
-  for (let i = 0; i < pathParts.length; i++) {
-    if (i === 0) {
-      continue;
-    }
-
-    currentFolder = currentFolder.find(
-      (f) => f.isFile === false && f.path === pathParts[i],
-    ).docs;
-  }
-  return [currentFolder, rootFolderPath];
-};
+import BookCard from "./BookCard.jsx";
+import FolderCard from "./FolderCard.jsx";
 
 function BookGallery() {
-  const [searchParams] = useSearchParams();
   const [contextPositionX, setContextPositionX] = useState();
   const [contextPositionY, setContextPositionY] = useState();
+  const [showFolders, setShowFolders] = useState(true);
+  const [showFiles, setShowFiles] = useState(true);
+
   const [isMenuShown, setIsMenuShown] = useState(false);
+
+  const [searchParams] = useSearchParams();
+  let path = searchParams.get("p");
+  if (path === undefined || path === null) path = "";
+
+  const useFoldersAndFiles = () => {
+    const [searchParams] = useSearchParams();
+    let path = searchParams.get("p");
+    if (path === undefined || path === null) path = "";
+
+    const fetchFoldersAndFiles = async () => {
+      if (path === "" || path === "/") {
+        const response = await fetch("https://localhost:7267/getrootfolder", {
+          method: "POST",
+        });
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      } else {
+        const response = await fetch("https://localhost:7267/getfolder", {
+          method: "POST",
+          body: `"${path}"`,
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      }
+    };
+
+    return useQuery({
+      queryKey: ["data", path],
+      queryFn: fetchFoldersAndFiles,
+      placeholderData: {
+        folders: [],
+        files: [],
+      },
+      onError: (error) => {
+        console.error("Query error:", error);
+      },
+    });
+  };
+
+  const { isPending, error, data } = useFoldersAndFiles();
+
+  if (isPending) {
+    return "waiting...";
+  }
 
   document.body.addEventListener("click", (e) => {
     let elements = document.getElementsByClassName("ctx-menu");
@@ -54,14 +91,10 @@ function BookGallery() {
     }
   }
 
-  let path = searchParams.get("p");
-  if (path === undefined || path === null) path = "";
-
-  let [bookList, rootFolderPath] = getBooks(path);
   return (
     <main
       onContextMenu={(e) => contextMenu(e)}
-      className=" py-10 bg-mint-pale min-h-[90vh]"
+      className=" py-10 bg-mint-pale w-full min-h-[90vh]"
     >
       <ContextMenu
         positionY={contextPositionY}
@@ -70,12 +103,33 @@ function BookGallery() {
         setIsShown={setIsMenuShown}
       />
 
-      <div className="bg-mint-very-light shadow-md rounded-lg px-12 py-8 m-auto h-full  w-max">
-        <p className="font-serif text-2xl font-bold mb-3">{`/${rootFolderPath}${path}`}</p>
+      <div className="bg-mint-very-light shadow-md rounded-lg px-12 py-8 m-auto h-full w-max">
+        <p className="font-serif text-2xl font-bold mb-3">{`/${path}`}</p>
+        <div className="flex gap-4 mb-8">
+          <button
+            onClick={() => {
+              setShowFolders(!showFolders);
+            }}
+            className={`${!showFolders ? "p-1 px-2 rounded-md hover:bg-mint bg-mint-light" : "p-1 px-2 rounded-md hover:bg-mint bg-mint"} `}
+          >
+            Folder
+          </button>
+          <button
+            onClick={() => {
+              setShowFiles(!showFiles);
+            }}
+            className={`${!showFiles ? "p-1 px-2 rounded-md hover:bg-mint bg-mint-light" : "p-1 px-2 rounded-md hover:bg-mint bg-mint"} `}
+          >
+            File
+          </button>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {bookList.map((value, index) => (
-            <BookCard {...value} currentPath={path} key={index} />
-          ))}
+          {showFiles &&
+            data.files.map((file, index) => <BookCard {...file} key={index} />)}
+          {showFolders &&
+            data.folders.map((file, index) => (
+              <FolderCard {...file} key={index} />
+            ))}
         </div>
       </div>
     </main>
@@ -96,8 +150,6 @@ function ContextMenu({ positionY, positionX, isShown, setIsShown }) {
       </button>
     );
   }
-
-  function openDocument() {}
 
   return (
     isShown && (
